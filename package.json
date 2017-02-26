@@ -15,7 +15,7 @@
   "main": "dist/commonjs/index.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/aurelia/skeleton-plugin"
+    "url": "https://github.com/Nilz11/aurelia-converters"
   },
   "devDependencies": {
     "aurelia-tools": "^0.2.4",
@@ -60,6 +60,13 @@
     },
     "devDependencies": {
       "aurelia-polyfills": "^1.0.0-beta.1.1.0"
+    }
+  },
+  "aurelia": {
+    "build": {
+      "resources": [
+        "@nilz/aurelia-converters/keys"
+      ]
     }
   }
 }
