@@ -7,7 +7,7 @@ class ConfigStub {
 }
 
 describe('the Aurelia configuration', () => {
-  var mockedConfiguration;
+  let mockedConfiguration;
 
   beforeEach(() => {
     mockedConfiguration = new ConfigStub();
@@ -15,7 +15,7 @@ describe('the Aurelia configuration', () => {
   });
 
   it('should register a global resource', () => {
-    expect(mockedConfiguration.resources).toContain('./keys');
+    expect(mockedConfiguration.resources).toContain(['./date', './filesize', './integer', './join', './json', './keys', './number', './percentage', './time', './truncate']);
   });
 
 });
