@@ -2,6 +2,8 @@
 
 Repository containing useful and common aurelia converters.
 
+![Build](https://travis-ci.org/Nilz11/aurelia-converters.svg?branch=master)
+
 ### Installation
 
 Install depending on package manager:

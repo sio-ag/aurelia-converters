@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - node
+cache:
+  directories:
+  - $HOME/.jspm
+  - jspm_packages
+env:
+    global:
+        secure: "Qv1vxBoVLMZNEPG2LV7iNd6uqrrjQTqWa3H79JFuecPlQ3SfJNBY8nehkfVaTxxNJv1iaXFuKkjqwqU+cX0BxPf5COmPYMDjahY/mIY5GaXp0IRyFssw8CfQIo9dfn4LitMAB5udno2Qn9zmkRzZMHD7aBFPBXTljTuIvjL7juPV0aMDC4m1Sbr1QSXeMu3WmHkGxUV6E2pHksPZBP99Ayr52UGpYSfFRi5Om4Rhi3dTPgcIbC3+dNBw9NKzfA0f/b9RXQQs6vluThf+/5uLPqyFp5d77WeRJwbW9iuPDXECWgsm0qOCglSsahgu9ALA601+8BrnY5XknABxS8M0R62st6dz0uAslqupwJJlixrodBlWqu1GiFsyBt2SNZgF4ArVQPE9LDTfu3RO1s2Wfs9xoIoiF8eOe4zhXjkz6YISD2t0duiiThWA5P5FbIyUAzwjed1ojj9n2+CM6pp/jXh+nwl2dE+tBEoGWgzycZ68r7wU0DBdIUjnL4MRJ1Y0cvC7YbMBSfkBosiV3K0ehGXL12EWUcgeiNG3sVl1OO9uB5XndN1XnNgftoTZcx7RwVFHpZXJQ2g3DuVV30KBlfoxwaMgJGpjdzaeJqxX2aLbBZiKvygirBEEjfUvuqHgOcBb5h+9ntQG2BOAfB9qC84C8VlJA2X2kyfkGwfOggo="
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - npm install -g jspm
+  - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
+  - jspm install
