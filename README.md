@@ -2,7 +2,7 @@
 
 Repository containing useful and common aurelia converters.
 
-![Build](https://travis-ci.org/Nilz11/aurelia-converters.svg?branch=master)
+[![Build Status](https://travis-ci.org/Nilz11/aurelia-converters.svg?branch=master)](https://travis-ci.org/Nilz11/aurelia-converters)
 
 ### Installation
 
