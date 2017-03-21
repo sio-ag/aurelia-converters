@@ -2,19 +2,19 @@
 
 Repository containing useful and common aurelia converters.
 
-[![Build Status](https://travis-ci.org/Nilz11/aurelia-converters.svg?branch=master)](https://travis-ci.org/Nilz11/aurelia-converters)
+[![Build Status](https://travis-ci.org/sio-ag/aurelia-converters.svg?branch=master)](https://travis-ci.org/sio-ag/aurelia-converters)
 
 ### Installation
 
 Install depending on package manager:
 
-`npm install @nilz/aurelia-converters`
+`npm install @sio/aurelia-converters`
 
 Plugin depends on `moment` for date formatting and `numeral` for number formatting.
 
 Add plugin to aurelia in main.js:
 
-`.plugin('@nilz/aurelia-converters')`
+`.plugin('@sio/aurelia-converters')`
 
 ### Usage
 

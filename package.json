@@ -1,6 +1,6 @@
 {
-  "name": "@nilz/aurelia-converters",
-  "version": "1.0.2",
+  "name": "@sio/aurelia-converters",
+  "version": "1.0.3",
   "description": "Common aurelia converters",
   "keywords": [
     "aurelia",
@@ -76,16 +76,16 @@
   "aurelia": {
     "build": {
       "resources": [
-        "@nilz/aurelia-converters/date",
-        "@nilz/aurelia-converters/filesize",
-        "@nilz/aurelia-converters/integer",
-        "@nilz/aurelia-converters/join",
-        "@nilz/aurelia-converters/json",
-        "@nilz/aurelia-converters/keys",
-        "@nilz/aurelia-converters/number",
-        "@nilz/aurelia-converters/percentage",
-        "@nilz/aurelia-converters/time",
-        "@nilz/aurelia-converters/truncate"
+        "@sio/aurelia-converters/date",
+        "@sio/aurelia-converters/filesize",
+        "@sio/aurelia-converters/integer",
+        "@sio/aurelia-converters/join",
+        "@sio/aurelia-converters/json",
+        "@sio/aurelia-converters/keys",
+        "@sio/aurelia-converters/number",
+        "@sio/aurelia-converters/percentage",
+        "@sio/aurelia-converters/time",
+        "@sio/aurelia-converters/truncate"
       ]
     }
   }
