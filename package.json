@@ -11,17 +11,18 @@
     "test": "./node_modules/.bin/karma start --browsers Firefox --single-run"
   },
   "bugs": {
-    "url": "https://github.com/Nilz11/aurelia-converters/issues"
+    "url": "https://github.com/sio-ag/aurelia-converters/issues"
   },
   "license": "MIT",
   "author": "Nilz <nilsweidl@gmail.com>",
   "main": "dist/commonjs/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Nilz11/aurelia-converters"
+    "url": "https://github.com/sio-ag/aurelia-converters"
   },
   "dependencies": {
     "moment": "^2.17.1",
+    "moment-timezone": "^0.5.13",
     "numeral": "^2.0.4"
   },
   "devDependencies": {
@@ -70,6 +71,7 @@
     "devDependencies": {
       "aurelia-polyfills": "^1.0.0-beta.1.1.0",
       "moment": "^2.17.1",
+      "moment-timezone": "^0.5.13",
       "numeral": "^2.0.4"
     }
   },

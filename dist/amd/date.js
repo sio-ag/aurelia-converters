@@ -1,4 +1,4 @@
-define(['exports', 'moment'], function (exports, _moment) {
+define(['exports', 'moment-timezone'], function (exports, _momentTimezone) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
@@ -6,7 +6,7 @@ define(['exports', 'moment'], function (exports, _moment) {
     });
     exports.DateValueConverter = undefined;
 
-    var _moment2 = _interopRequireDefault(_moment);
+    var _momentTimezone2 = _interopRequireDefault(_momentTimezone);
 
     function _interopRequireDefault(obj) {
         return obj && obj.__esModule ? obj : {
@@ -29,12 +29,18 @@ define(['exports', 'moment'], function (exports, _moment) {
             };
         }
 
-        DateValueConverter.prototype.toView = function toView(value, format) {
+        DateValueConverter.prototype.toView = function toView(value, format, timezone) {
             if (!value) {
                 return null;
             }
 
-            return (0, _moment2.default)(value).format(format || this.defaults.format);
+            value = (0, _momentTimezone2.default)(value);
+
+            if (timezone) {
+                value = value.tz(timezone);
+            }
+
+            return value.format(format || this.defaults.format);
         };
 
         return DateValueConverter;

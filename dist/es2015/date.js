@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 export let DateValueConverter = class DateValueConverter {
 
@@ -8,11 +8,17 @@ export let DateValueConverter = class DateValueConverter {
         };
     }
 
-    toView(value, format) {
+    toView(value, format, timezone) {
         if (!value) {
             return null;
         }
 
-        return moment(value).format(format || this.defaults.format);
+        value = moment(value);
+
+        if (timezone) {
+            value = value.tz(timezone);
+        }
+
+        return value.format(format || this.defaults.format);
     }
 };

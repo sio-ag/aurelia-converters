@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['moment'], function (_export, _context) {
+System.register(['moment-timezone'], function (_export, _context) {
     "use strict";
 
     var moment, DateValueConverter;
@@ -12,8 +12,8 @@ System.register(['moment'], function (_export, _context) {
     }
 
     return {
-        setters: [function (_moment) {
-            moment = _moment.default;
+        setters: [function (_momentTimezone) {
+            moment = _momentTimezone.default;
         }],
         execute: function () {
             _export('DateValueConverter', DateValueConverter = function () {
@@ -25,12 +25,18 @@ System.register(['moment'], function (_export, _context) {
                     };
                 }
 
-                DateValueConverter.prototype.toView = function toView(value, format) {
+                DateValueConverter.prototype.toView = function toView(value, format, timezone) {
                     if (!value) {
                         return null;
                     }
 
-                    return moment(value).format(format || this.defaults.format);
+                    value = moment(value);
+
+                    if (timezone) {
+                        value = value.tz(timezone);
+                    }
+
+                    return value.format(format || this.defaults.format);
                 };
 
                 return DateValueConverter;
