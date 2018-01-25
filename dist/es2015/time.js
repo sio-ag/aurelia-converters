@@ -7,6 +7,12 @@ export let TimeValueConverter = class TimeValueConverter {
             return null;
         }
 
+        let negative = false;
+        if (value < 0) {
+            negative = true;
+            value = Math.abs(value);
+        }
+
         let hours = Math.floor(value / 3600);
         let minutes = Math.floor((value - hours * 3600) / 60);
         let seconds = value - hours * 3600 - minutes * 60;
@@ -20,6 +26,6 @@ export let TimeValueConverter = class TimeValueConverter {
         if (seconds < 10) {
             seconds = "0" + seconds;
         }
-        return hours + ':' + minutes + ':' + seconds;
+        return (negative ? '-' : '') + hours + ':' + minutes + ':' + seconds;
     }
 };
