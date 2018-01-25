@@ -9,23 +9,31 @@ var _baseNumber = require("./base-number");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TimeValueConverter = exports.TimeValueConverter = function (_BaseNumberValueConve) {
-    _inherits(TimeValueConverter, _BaseNumberValueConve);
-
+var TimeValueConverter = exports.TimeValueConverter = function () {
     function TimeValueConverter() {
         _classCallCheck(this, TimeValueConverter);
-
-        var _this = _possibleConstructorReturn(this, _BaseNumberValueConve.call(this));
-
-        _this.defaults = {
-            format: '00:00:00'
-        };
-        return _this;
     }
 
+    TimeValueConverter.prototype.toView = function toView(value, format) {
+        if (!value) {
+            return null;
+        }
+
+        var hours = Math.floor(value / 3600);
+        var minutes = Math.floor((value - hours * 3600) / 60);
+        var seconds = value - hours * 3600 - minutes * 60;
+
+        if (hours < 10) {
+            hours = "0" + hours;
+        }
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
+        return hours + ':' + minutes + ':' + seconds;
+    };
+
     return TimeValueConverter;
-}(_baseNumber.BaseNumberValueConverter);
+}();
