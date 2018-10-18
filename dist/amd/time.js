@@ -1,10 +1,9 @@
-define(["exports", "./base-number"], function (exports, _baseNumber) {
-    "use strict";
+define(['exports'], function (exports) {
+    'use strict';
 
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
-    exports.TimeValueConverter = undefined;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -17,31 +16,70 @@ define(["exports", "./base-number"], function (exports, _baseNumber) {
             _classCallCheck(this, TimeValueConverter);
         }
 
-        TimeValueConverter.prototype.toView = function toView(value, format) {
+        TimeValueConverter.prototype.toView = function toView(value) {
+            var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '00:00:00';
+
             if (!value) {
                 return null;
             }
 
-            var negative = false;
+            var output = '';
+
+            value = parseFloat(value);
+
             if (value < 0) {
-                negative = true;
+                output += '-';
                 value = Math.abs(value);
             }
 
-            var hours = Math.floor(value / 3600);
-            var minutes = Math.floor((value - hours * 3600) / 60);
-            var seconds = value - hours * 3600 - minutes * 60;
+            if (86400 <= value) {
+                var days = Math.floor(value / 86400);
 
-            if (hours < 10) {
-                hours = "0" + hours;
+                output += days;
+                value -= days * 86400;
+
+                if (0 === value) {
+                    return output;
+                }
+
+                output += '\xA0';
             }
-            if (minutes < 10) {
-                minutes = "0" + minutes;
+
+            var hours = Math.floor(value / 3600);
+
+            if (10 > hours) {
+                output += '0';
             }
-            if (seconds < 10) {
-                seconds = "0" + seconds;
+
+            output += hours;
+
+            if ('00' === format) {
+                return output;
             }
-            return (negative ? '-' : '') + hours + ':' + minutes + ':' + seconds;
+
+            value -= hours * 3600;
+            output += ':';
+
+            var minutes = Math.floor(value / 60);
+
+            if (10 > minutes) {
+                output += '0';
+            }
+
+            output += minutes;
+
+            if ('00:00' === format) {
+                return output;
+            }
+
+            value -= minutes * 60;
+            output += ':';
+
+            if (10 > value) {
+                output += '0';
+            }
+
+            return output + Math.round(value);
         };
 
         return TimeValueConverter;

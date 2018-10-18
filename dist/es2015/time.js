@@ -1,31 +1,67 @@
-import { BaseNumberValueConverter } from "./base-number";
 
 export let TimeValueConverter = class TimeValueConverter {
 
-    toView(value, format) {
+    toView(value, format = '00:00:00') {
         if (!value) {
             return null;
         }
 
-        let negative = false;
+        let output = '';
+
+        value = parseFloat(value);
+
         if (value < 0) {
-            negative = true;
+            output += '-';
             value = Math.abs(value);
         }
 
-        let hours = Math.floor(value / 3600);
-        let minutes = Math.floor((value - hours * 3600) / 60);
-        let seconds = value - hours * 3600 - minutes * 60;
+        if (86400 <= value) {
+            const days = Math.floor(value / 86400);
 
-        if (hours < 10) {
-            hours = "0" + hours;
+            output += days;
+            value -= days * 86400;
+
+            if (0 === value) {
+                return output;
+            }
+
+            output += '\xA0';
         }
-        if (minutes < 10) {
-            minutes = "0" + minutes;
+
+        const hours = Math.floor(value / 3600);
+
+        if (10 > hours) {
+            output += '0';
         }
-        if (seconds < 10) {
-            seconds = "0" + seconds;
+
+        output += hours;
+
+        if ('00' === format) {
+            return output;
         }
-        return (negative ? '-' : '') + hours + ':' + minutes + ':' + seconds;
+
+        value -= hours * 3600;
+        output += ':';
+
+        const minutes = Math.floor(value / 60);
+
+        if (10 > minutes) {
+            output += '0';
+        }
+
+        output += minutes;
+
+        if ('00:00' === format) {
+            return output;
+        }
+
+        value -= minutes * 60;
+        output += ':';
+
+        if (10 > value) {
+            output += '0';
+        }
+
+        return output + Math.round(value);
     }
 };
