@@ -23,7 +23,7 @@ var BaseNumberValueConverter = exports.BaseNumberValueConverter = function () {
     }
 
     BaseNumberValueConverter.prototype.toView = function toView(value, format) {
-        if (!value) {
+        if (null === value || undefined === value) {
             return null;
         }
 

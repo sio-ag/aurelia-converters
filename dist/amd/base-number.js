@@ -30,7 +30,7 @@ define(['exports', 'numeral'], function (exports, _numeral) {
         }
 
         BaseNumberValueConverter.prototype.toView = function toView(value, format) {
-            if (!value) {
+            if (null === value || undefined === value) {
                 return null;
             }
 

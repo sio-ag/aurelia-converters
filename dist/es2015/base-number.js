@@ -9,7 +9,7 @@ export let BaseNumberValueConverter = class BaseNumberValueConverter {
     }
 
     toView(value, format) {
-        if (!value) {
+        if (null === value || undefined === value) {
             return null;
         }
 
