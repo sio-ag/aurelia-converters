@@ -35,17 +35,20 @@ System.register([], function (_export, _context) {
                         value = Math.abs(value);
                     }
 
-                    if (86400 <= value) {
-                        var days = Math.floor(value / 86400);
+                    if (/^0 /.test(format)) {
+                        if (86400 <= value) {
+                            var days = Math.floor(value / 86400);
 
-                        output += days;
-                        value -= days * 86400;
+                            output += days;
+                            value -= days * 86400;
 
-                        if (0 === value) {
-                            return output;
+                            if (0 === value) {
+                                return output;
+                            }
+
+                            output += '\xA0';
                         }
-
-                        output += '\xA0';
+                        format = format.replace(/^0 /, '');
                     }
 
                     var hours = Math.floor(value / 3600);
